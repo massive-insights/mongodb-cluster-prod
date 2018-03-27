@@ -13,8 +13,7 @@ fi
 
 # Create MongoDB replica set
 echo ">>> Configuring MongoDB replica set rs0 ..."
-rs_initiate_cmd='rs.initiate({_id: "rs0", version: 1, members: [ {_id: 0, host: "mongod-0.mongodb-service.default.svc.cluster.local:27017"}, {_id: 1, host: "mongod-1.mongodb-service.default.s    vc.cluster.local:27017"}, {_id: 2, host: "mongod-2.mongodb-service.default.svc.cluster.local:27017"} ]});'
-kubectl exec mongod-0 -c mongod-container -- mongo --eval $rs_initiate_cmd
+kubectl exec mongod-0 -c mongod-container -- mongo --eval 'rs.initiate({_id: "rs0", version: 1, members: [ {_id: 0, host: "mongod-0.mongodb-service.default.svc.cluster.local:27017"}, {_id: 1, host: "mongod-1.mongodb-service.default.svc.cluster.local:27017"}, {_id: 2, host: "mongod-2.mongodb-service.default.svc.cluster.local:27017"} ]});'
 echo
 
 # Wait for MongoDB replica set to have its primary ready

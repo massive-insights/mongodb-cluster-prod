@@ -65,6 +65,11 @@ until kubectl --v=0 exec mongod-2 -c mongod-container -- mongo --quiet --eval 'd
 done
 echo
 
+# --- Create Nginx deployment
+echo ">>> Creating Nginx deployment ..."
+kubectl apply -f ../resources/deployment.yaml
+echo
+
 kubectl get persistentvolumes
 echo
 kubectl get all 

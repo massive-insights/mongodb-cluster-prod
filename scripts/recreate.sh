@@ -11,6 +11,12 @@ kubectl apply -f ../resources/service.yaml
 sleep 5
 echo
 
+# --- Create Nginx deployment
+echo ">>> Creating Nginx deployment ..."
+kubectl apply -f ../resources/deployment.yaml
+sleep 5
+echo
+
 kubectl get persistentvolumes
 echo
 kubectl get all
